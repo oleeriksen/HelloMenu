@@ -21,8 +21,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val txt1 = findViewById<TextView>(R.id.txt1)
+        val txt2 = findViewById<TextView>(R.id.txt2)
 
         registerForContextMenu(txt1)
+        registerForContextMenu(txt2)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -60,9 +62,14 @@ class MainActivity : AppCompatActivity() {
         menuInfo: ContextMenuInfo?
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
-        Log.d(TAG, "Context menu created ")
+
         if (v === findViewById<TextView>(R.id.txt1)) {
             menuInflater.inflate(R.menu.context_menu, menu)
+            Log.d(TAG, "Context menu created for txt1 ")
+        }
+        if (v === findViewById<TextView>(R.id.txt2)) {
+            menuInflater.inflate(R.menu.context_menu, menu)
+            Log.d(TAG, "Context menu created for txt2 ")
         }
     }
 
